@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Hướng dẫn sử dụng | HOÀNG TRƯỜNG AUDIO</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<link rel="stylesheet" href="assets/css/guide.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="guide-header">
+
+<a href="index.html" class="back-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+<span>Trang chủ</span>
+
+</a>
+
+<img src="assets/images/logo.png"
+
+class="logo"
+
+alt="HTA">
+
+<h1>
+
+Hướng dẫn sử dụng
+
+</h1>
+
+<p>
+
+Chọn nội dung cần hỗ trợ
+
+</p>
+
+</header>
+
+
+
+<section class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+
+type="text"
+
+placeholder="Tìm Bluetooth, Reset, ANC..."
+
+id="searchInput">
+
+</section>
+
+
+
+<section class="guide-grid">
+
+<div class="guide-card"
+
+data-guide="bluetooth">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-headphones"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Kết nối Bluetooth
+
+</h3>
+
+<p>
+
+Kết nối với điện thoại
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+
+
+
+
+<div class="guide-card"
+
+data-guide="reset">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-rotate"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Reset tai nghe
+
+</h3>
+
+<p>
+
+Khôi phục cài đặt
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+
+
+
+
+<div class="guide-card"
+
+data-guide="touch">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-hand-pointer"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Điều khiển cảm ứng
+
+</h3>
+
+<p>
+
+Các thao tác chạm
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+
+
+
+
+<div class="guide-card"
+
+data-guide="anc">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-volume-xmark"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+ANC & Xuyên âm
+
+</h3>
+
+<p>
+
+Các chế độ nghe
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+</section>
+
+<!-- ===========================
+POPUP HƯỚNG DẪN
+=========================== -->
+
+<div class="guide-modal" id="guideModal">
+
+    <div class="guide-modal-box">
+
+        <button class="close-modal" id="closeModal">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <h2 id="modalTitle"></h2>
+
+        <video
+            id="modalVideo"
+            controls
+            playsinline
+            width="100%">
+        </video>
+
+        <div id="modalContent"></div>
+
+        <div class="modal-buttons">
+
+            <button class="success">
+
+                👍 Đã khắc phục
+
+            </button>
+
+            <button class="danger">
+
+                💬 Liên hệ kỹ thuật
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/guide.js"></script>
+
+</body>
+
+</html>
+
+<link rel="icon" href="assets/images/favicon.png">

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bảo hành | HOÀNG TRƯỜNG AUDIO</title>
+
+<link rel="icon" href="assets/images/favicon.png">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/guide.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="guide-header">
+
+<a href="index.html" class="back-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+<span>Trang chủ</span>
+
+</a>
+
+<img src="assets/images/logo.png"
+
+class="logo"
+
+alt="HOÀNG TRƯỜNG AUDIO">
+
+<h1>
+
+Bảo hành
+
+</h1>
+
+<p>
+
+Chính sách & hỗ trợ sau bán hàng
+
+</p>
+
+</header>
+
+<section class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="searchWarranty"
+placeholder="Tìm nội dung bảo hành...">
+
+</section>
+
+<section class="guide-grid">
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="policy">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Chính sách bảo hành
+
+</h3>
+
+<p>
+
+Thời hạn và phạm vi bảo hành
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="condition">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-circle-check"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Điều kiện bảo hành
+
+</h3>
+
+<p>
+
+Các trường hợp được hỗ trợ
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="reject">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-circle-xmark"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Không thuộc bảo hành
+
+</h3>
+
+<p>
+
+Các trường hợp từ chối bảo hành
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="process">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-box-open"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Quy trình bảo hành
+
+</h3>
+
+<p>
+
+5 bước gửi bảo hành
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="shipping">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-truck-fast"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Chi phí vận chuyển
+
+</h3>
+
+<p>
+
+Quy định gửi nhận hàng
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="support">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-headset"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Hỗ trợ kỹ thuật
+
+</h3>
+
+<p>
+
+Kỹ thuật hỗ trợ 24/7
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+<!-- ====================== -->
+
+<div class="guide-card"
+
+data-warranty="contact">
+
+<div class="left">
+
+<div class="icon">
+
+<i class="fa-solid fa-phone-volume"></i>
+
+</div>
+
+<div>
+
+<h3>
+
+Liên hệ bảo hành
+
+</h3>
+
+<p>
+
+Hotline • Zalo • Shopee
+
+</p>
+
+</div>
+
+</div>
+
+<i class="fa-solid fa-chevron-right arrow"></i>
+
+</div>
+
+</section>
+
+<!-- ===========================
+POPUP BẢO HÀNH
+=========================== -->
+
+<div class="guide-modal" id="warrantyModal">
+
+    <div class="guide-modal-box">
+
+        <button class="close-modal" id="closeWarranty">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+        <h2 id="warrantyTitle"></h2>
+
+        <div id="warrantyContent"></div>
+
+        <div class="modal-buttons">
+
+            <button class="success" id="understandBtn">
+
+                ✓ Đã hiểu
+
+            </button>
+
+            <button class="danger" onclick="location.href='lien-he.html'">
+
+                💬 Liên hệ hỗ trợ
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ===========================
+FOOTER
+=========================== -->
+
+<footer class="footer">
+
+    <img
+        src="assets/images/logo.png"
+        alt="HOÀNG TRƯỜNG AUDIO">
+
+    <h3>
+
+        HOÀNG TRƯỜNG AUDIO
+
+    </h3>
+
+    <p>
+
+        Trung tâm hỗ trợ khách hàng
+
+    </p>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-links">
+
+        <a href="index.html">
+
+            Trang chủ
+
+        </a>
+
+        <a href="huong-dan.html">
+
+            Hướng dẫn
+
+        </a>
+
+        <a href="thong-so.html">
+
+            Thông số
+
+        </a>
+
+        <a href="van-de.html">
+
+            Vấn đề
+
+        </a>
+
+    </div>
+
+    <p class="copyright">
+
+        © 2026 HOÀNG TRƯỜNG AUDIO
+
+    </p>
+
+</footer>
+
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/warranty.js"></script>
+
+</body>
+</html>
