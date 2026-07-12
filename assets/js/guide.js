@@ -68,9 +68,12 @@ const guideData = {
 
         title: "Điều khiển cảm ứng",
 
-        video: "assets/videos/touch.mp4",
-
         content: `
+
+            <img
+            src="assets/images/sosanh.png"
+            class="spec-image">
+
             <div class="guide-content-box">
 
                 <h3>📋 Thao tác</h3>
@@ -149,11 +152,20 @@ document.querySelectorAll(".guide-card").forEach(card => {
 
         modalTitle.textContent = data.title;
 
-        modalVideo.src = data.video;
+// Nếu có video thì hiển thị
+if (data.video) {
+    modalVideo.style.display = "block";
+    modalVideo.src = data.video;
+} else {
+    modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalVideo.load();
+    modalVideo.style.display = "none";
+}
 
-        modalContent.innerHTML = data.content;
+modalContent.innerHTML = data.content;
 
-        modal.style.display = "flex";
+modal.style.display = "flex";
 
         document.body.style.overflow = "hidden";
 

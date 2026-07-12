@@ -894,3 +894,103 @@ SHINE EFFECT
     left:140%;
 
 }
+
+/*=============================
+ ACCORDION
+=============================*/
+
+.accordion-item{
+
+background:#fff;
+
+border-radius:18px;
+
+margin-bottom:14px;
+
+box-shadow:0 8px 24px rgba(0,0,0,.06);
+
+overflow:hidden;
+
+}
+
+.accordion{
+
+width:100%;
+
+padding:18px 20px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:#fff;
+
+border:none;
+
+cursor:pointer;
+
+font-size:17px;
+
+font-weight:700;
+
+color:#111827;
+
+}
+
+.accordion span{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+}
+
+.accordion i{
+
+transition:.3s;
+
+}
+
+.accordion.active i:last-child{
+
+transform:rotate(180deg);
+
+}
+
+.panel{
+
+max-height:0;
+
+overflow:hidden;
+
+transition:max-height .35s ease;
+
+background:#f8fafc;
+
+}
+
+.panel p{
+
+padding:18px 20px;
+
+margin:0;
+
+font-size:15px;
+
+line-height:1.8;
+
+color:#6b7280;
+
+}
+
+.guide-card[data-problem="nosound"] .icon{
+    background:linear-gradient(135deg,#818CF8,#4F46E5);
+}
+
+.guide-card[data-problem="disconnect"] .icon{
+    background:linear-gradient(135deg,#38BDF8,#0284C7);
+}
