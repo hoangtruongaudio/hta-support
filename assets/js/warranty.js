@@ -144,7 +144,7 @@ const warrantyData = {
 
 <strong>⏱️ Thời gian</strong>
 
-<p>Thông thường từ 3–7 ngày làm việc.</p>
+<p>Thông thường từ 1-2 ngày làm việc.</p>
 
 </div>
 
@@ -236,9 +236,9 @@ const warrantyData = {
 
 <ul>
 
-<li>• Chat Zalo.</li>
+<li>• Chat Zalo 0985500095.</li>
 
-<li>• Gọi Hotline.</li>
+<li>• Gọi Hotline 0985500095.</li>
 
 <li>• Nhắn Shopee.</li>
 

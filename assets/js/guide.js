@@ -16,11 +16,11 @@ const guideData = {
                 <h3>📋 Các bước thực hiện</h3>
 
                 <ol>
-                    <li>Mở nắp hộp sạc.</li>
-                    <li>Lấy cả hai tai nghe ra.</li>
-                    <li>Nếu chưa kết nối được, nhấn giữ nút Reset khoảng 10 giây.</li>
-                    <li>Bật Bluetooth trên điện thoại.</li>
-                    <li>Chọn tên thiết bị <b>HTA AP2</b>.</li>
+                    <li>Mở Bluetoth trên điện thoại.</li>
+                    <li>Mở nắp tai nghe lên.</li>
+                    <li>Màn hình iphone sẽ hiển thị kết nối, sau đó nhấn giữ nút sau lưng hộp tai nghe đến khi hết hiển thị chữ kết nối.</li>
+                    <li>Máy báo kết nối thành công thì lấy tai nghe ra khỏi hộp và sử dụng.</li>
+                    <li>Lưu ý <b>máy Androi</b>.</li> : Chỉ cần mở nắp tai nghe vào cài đặt bluetooth. nhấn vào tên tai nghe " VD: Airpods " để kết nối.
                 </ol>
 
                 <div class="guide-note">
@@ -50,11 +50,11 @@ const guideData = {
                 <h3>📋 Các bước Reset</h3>
 
                 <ol>
-                    <li>Đặt cả hai tai nghe vào hộp sạc.</li>
-                    <li>Mở nắp hộp.</li>
-                    <li>Nhấn giữ nút Reset khoảng 10 giây.</li>
-                    <li>Đợi đèn LED nhấp nháy.</li>
-                    <li>Kết nối Bluetooth lại.</li>
+                    <li>Vào cài đặt bluetooth trên điện thoại chọn quên tên thiết bị</li>
+                    <li>Đặt cả hai tai nghe vào hộp sạc và để mở nắp hộp.</li>
+                    <li>Nhấn giữ nút sau lưng hộp Reset khoảng 10 giây.</li>
+                    <li>Đợi đèn LED nhấp nháy rồi đóng nắp.</li>
+                    <li>Kết nối Bluetooth lại theo hướng dẫn kết nối bluetooth.</li>
                 </ol>
 
             </div>
@@ -77,12 +77,16 @@ const guideData = {
 
                 <ul>
 
-                    <li>• Chạm 1 lần: Phát / Tạm dừng.</li>
+                    <li> Chạm 1 lần: Phát / Tạm dừng - Nhận / Tắt Cuộc Gọi.</li>
 
-                    <li>• Chạm 2 lần: Chuyển bài.</li>
+                    <li> Chạm 2 lần: Chuyển bài.</li>
 
-                    <li>• Nhấn giữ: Chuyển chế độ ANC.</li>
+                    <li> Chạm 3 lần quay lại bài cũ.</li>
 
+                    <li> Vuốt lên xuống để tăng giảm âm lượng [ Chỉ Riêng Với Pro 2 ].</li>
+
+                    <li> Nhấn giữ: Chuyển chế độ ANC [ Chỉ Riêng Với Pro 2 ANC ].</li>
+                    
                 </ul>
 
             </div>
@@ -105,11 +109,11 @@ const guideData = {
 
                 <ul>
 
-                    <li>• ANC: Khử tiếng ồn.</li>
+                    <li>ANC: Khử ồn chủ động – Giảm tiếng ồn xung quanh, tập trung hơn.</li>
 
-                    <li>• Transparency: Nghe âm thanh bên ngoài.</li>
+                    <li>Transparency: Chế độ Xuyên âm – Nghe nhạc đồng thời vẫn nghe được âm thanh bên ngoài.</li>
 
-                    <li>• Normal: Chế độ thường.</li>
+                    <li>Normal: Chế độ Thường – Âm thanh cân bằng, nghe nhạc rõ nét</li>
 
                 </ul>
 
