@@ -649,6 +649,7 @@ CAM KẾT DỊCH VỤ
   }
   // Nhóm vấn đề được biên soạn sẵn, hoạt động offline, không gọi AI.
   const issues = [
+    {title:'Tai nghe tự dừng nhạc khi đeo', desc:'Cảm biến phát hiện tháo tai có thể nhận nhầm khi đeo lỏng', words:['tu dung nhac','dung nhac','tam dung','cam bien nhiet','phat hien tai','deo long','thao tai','tu ngat nhac'], advice:'Tai nghe có thể tự dừng nhạc khi đeo lỏng vì cảm biến nhận nhầm bạn đã tháo tai. Trên iPhone, vào Cài đặt → Bluetooth → nhấn (i) cạnh tên tai nghe → tắt “Tự động phát hiện tai nghe” (nếu có).', url:'huong-dan.html'},
     {title:'Tai nghe bị ngắt kết nối liên tục', desc:'Bluetooth chập chờn, âm thanh ngắt quãng', words:['ngat','dut quang','chap chon','mat ket noi','roi ket noi','tu ngat','ngat quang'], advice:'Thử sạc đầy tai nghe, giữ điện thoại ở gần, tắt rồi bật Bluetooth và ghép nối lại. Nếu vẫn bị ngắt, thử kết nối với điện thoại khác.', url:'van-de.html#disconnect'},
     {title:'Tai nghe chỉ nghe được một bên', desc:'Một bên không phát tiếng hoặc mất âm thanh', words:['mot ben','1 ben','ben trai','ben phai','mat tieng','khong nghe'], advice:'Kiểm tra pin hai tai, vệ sinh nhẹ điểm tiếp xúc sạc, sau đó quên thiết bị Bluetooth và ghép nối lại.', url:'van-de.html#one'},
     {title:'Tai nghe không sạc hoặc nhanh hết pin', desc:'Hộp sạc, pin yếu, không nhận sạc', words:['khong sac','sac khong vao','het pin','hao pin','pin yeu','nhanh het pin','hop sac'], advice:'Kiểm tra dây và củ sạc, làm sạch nhẹ chân tiếp xúc khô, thử nguồn sạc khác. Ngừng sử dụng nếu thiết bị nóng bất thường hoặc phồng pin.', url:'van-de.html#charge'},
@@ -688,7 +689,7 @@ CAM KẾT DỊCH VỤ
     if(scored.length){
       const best=scored[0].issue;
       const advice=document.createElement('div'); advice.className='hta-advice';
-      const heading=document.createElement('strong'); heading.textContent='Gợi ý xử lý nhanh: '+best.title;
+      const heading=document.createElement('strong'); heading.textContent='🎧 Nguyên nhân & Cách khắc phục: '+best.title;
       const detail=document.createElement('p'); detail.textContent=best.advice;
       advice.append(heading,detail); results.appendChild(advice);
     }
