@@ -277,6 +277,51 @@ POPUP HƯỚNG DẪN
 <script src="assets/js/guide.js"></script>
 
 
+<!-- HƯỚNG DẪN RIÊNG: CẢM BIẾN PHÁT HIỆN TAI NGHE -->
+<style>
+#earDetectionModal[hidden]{display:none!important}
+#earDetectionModal{position:fixed;inset:0;z-index:99999;background:rgba(15,23,42,.65);display:flex;align-items:center;justify-content:center;padding:18px}
+#earDetectionModal .ear-panel{position:relative;background:white;border-radius:22px;width:min(100%,480px);max-height:90vh;overflow:auto;padding:26px 22px;box-shadow:0 22px 70px rgba(0,0,0,.22);font-family:'Be Vietnam Pro',sans-serif;color:#111827}
+#earDetectionModal h2{font-size:21px;line-height:1.4;margin:0 36px 12px 0}
+#earDetectionModal p,#earDetectionModal li{font-size:14px;line-height:1.8;color:#475569}
+#earDetectionModal ol{padding-left:22px;margin:12px 0}
+#earDetectionModal .ear-close{position:absolute;right:15px;top:14px;background:#f1f5f9;border:0;border-radius:50%;width:36px;height:36px;font-size:23px;cursor:pointer}
+#earDetectionModal .ear-note{background:#eff6ff;border-radius:12px;padding:12px;margin-top:14px}
+#earDetectionModal .ear-contact{display:block;text-align:center;background:#2563eb;color:white;padding:13px;border-radius:12px;text-decoration:none;margin-top:18px;font-weight:600}
+</style>
+<div id="earDetectionModal" role="dialog" aria-modal="true" aria-labelledby="earDetectionTitle" hidden>
+  <div class="ear-panel">
+    <button type="button" class="ear-close" aria-label="Đóng hướng dẫn">&times;</button>
+    <h2 id="earDetectionTitle">🎧 Tai nghe tự dừng nhạc khi đeo</h2>
+    <p><strong>Nguyên nhân có thể gặp:</strong> Tính năng tự động phát hiện tai nghe nhận nhầm rằng bạn đã tháo tai nghe khi đeo lỏng, khiến nhạc tạm dừng.</p>
+    <p><strong>Cách tắt trên iPhone:</strong></p>
+    <ol>
+      <li>Kết nối tai nghe với iPhone.</li>
+      <li>Vào <strong>Cài đặt → Bluetooth</strong>.</li>
+      <li>Nhấn biểu tượng <strong>(i)</strong> cạnh tên tai nghe đang kết nối.</li>
+      <li>Nếu có mục <strong>“Tự động phát hiện tai nghe”</strong>, hãy tắt mục đó.</li>
+      <li>Đeo tai nghe và thử phát nhạc lại.</li>
+    </ol>
+    <p class="ear-note">Lưu ý: Hướng dẫn này dành cho iPhone và chỉ áp dụng với tai nghe có hỗ trợ tùy chọn trên. Nếu không thấy tùy chọn, hãy liên hệ kỹ thuật để được hướng dẫn theo đúng mẫu tai nghe.</p>
+    <a class="ear-contact" href="https://zalo.me/0985500095" target="_blank" rel="noopener noreferrer">💬 Liên hệ kỹ thuật qua Zalo</a>
+  </div>
+</div>
+<script>
+(function(){
+ const modal=document.getElementById('earDetectionModal');
+ const closeBtn=modal.querySelector('.ear-close');
+ let previousFocus=null;
+ function openEar(){previousFocus=document.activeElement;modal.hidden=false;document.body.style.overflow='hidden';closeBtn.focus();}
+ function closeEar(){modal.hidden=true;document.body.style.overflow='';if(location.hash==='#ear-detection')history.replaceState(null,'',location.pathname+location.search);if(previousFocus&&previousFocus.focus)previousFocus.focus();}
+ closeBtn.addEventListener('click',closeEar);
+ modal.addEventListener('click',e=>{if(e.target===modal)closeEar();});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeEar();});
+ function checkHash(){if(location.hash==='#ear-detection')openEar();}
+ window.addEventListener('hashchange',checkHash);
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',checkHash);else checkHash();
+})();
+</script>
+
 <!-- Tự mở đúng hướng dẫn khi khách đến từ ô tìm kiếm -->
 <script>
 window.addEventListener('load', function () {
