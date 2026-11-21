@@ -51,6 +51,10 @@
       .hta-result-text strong{display:block;font-size:14px;font-weight:700;line-height:1.4}
       .hta-result-text small{display:block;color:#64748b;font-size:12px;margin-top:3px;line-height:1.4}
       .hta-empty{padding:15px;font-size:13px;color:#64748b;line-height:1.6}
+      .hta-advice{padding:12px 14px;margin:5px 4px 8px;border-radius:13px;background:#eff6ff;color:#1e3a8a;font-size:13px;line-height:1.6}
+      .hta-advice strong{display:block;margin-bottom:4px}
+      .hta-advice p{margin:0}
+      .hta-hint{padding:7px 12px;color:#64748b;font-size:12px}
       @media(max-width:400px){.hta-search label{font-size:15px}#htaSearch{font-size:14px}}
     </style>
 
@@ -643,28 +647,71 @@ CAM KẾT DỊCH VỤ
   function normalize(value) {
     return value.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').trim();
   }
+  // Nhóm vấn đề được biên soạn sẵn, hoạt động offline, không gọi AI.
+  const issues = [
+    {title:'Tai nghe bị ngắt kết nối liên tục', desc:'Bluetooth chập chờn, âm thanh ngắt quãng', words:['ngat','dut quang','chap chon','mat ket noi','roi ket noi','tu ngat','ngat quang'], advice:'Thử sạc đầy tai nghe, giữ điện thoại ở gần, tắt rồi bật Bluetooth và ghép nối lại. Nếu vẫn bị ngắt, thử kết nối với điện thoại khác.', url:'van-de.html'},
+    {title:'Tai nghe chỉ nghe được một bên', desc:'Một bên không phát tiếng hoặc mất âm thanh', words:['mot ben','1 ben','ben trai','ben phai','mat tieng','khong nghe'], advice:'Kiểm tra pin hai tai, vệ sinh nhẹ điểm tiếp xúc sạc, sau đó quên thiết bị Bluetooth và ghép nối lại.', url:'van-de.html'},
+    {title:'Tai nghe không sạc hoặc nhanh hết pin', desc:'Hộp sạc, pin yếu, không nhận sạc', words:['khong sac','sac khong vao','het pin','hao pin','pin yeu','nhanh het pin','hop sac'], advice:'Kiểm tra dây và củ sạc, làm sạch nhẹ chân tiếp xúc khô, thử nguồn sạc khác. Ngừng sử dụng nếu thiết bị nóng bất thường hoặc phồng pin.', url:'van-de.html'},
+    {title:'Tai nghe không kết nối Bluetooth', desc:'Không tìm thấy tai nghe, ghép đôi thất bại', words:['khong ket noi','khong tim thay','khong ghep','bluetooth','ghep doi','ket noi'], advice:'Bật Bluetooth, mở hộp tai nghe, đưa tai nghe vào chế độ ghép nối theo hướng dẫn từng mẫu. Nếu đã kết nối máy cũ, hãy ngắt kết nối ở máy đó.', url:'huong-dan.html'},
+    {title:'Reset tai nghe và kết nối lại', desc:'Khôi phục ghép nối khi tai nghe gặp lỗi', words:['reset','khoi phuc','cai dat lai','dat lai'], advice:'Cách reset có thể khác nhau giữa AP2, AP3, Pro Gen 2 và AP4. Chọn đúng mẫu tai nghe trong hướng dẫn trước khi thao tác.', url:'huong-dan.html'},
+    {title:'Mic tai nghe nhỏ hoặc không hoạt động', desc:'Không nghe tiếng khi gọi điện', words:['mic','micro','khong noi','khong thu am','noi nho','goi dien'], advice:'Kiểm tra quyền dùng micro của ứng dụng, chọn đúng đầu vào âm thanh và thử ghi âm bằng ứng dụng khác.', url:'van-de.html'},
+    {title:'Âm lượng tai nghe quá nhỏ hoặc quá to', desc:'Điều chỉnh âm thanh, kiểm tra thiết bị', words:['am luong','qua to','qua nho','nho tieng','to tieng'], advice:'Kiểm tra âm lượng trên cả điện thoại và tai nghe, cài đặt cân bằng âm thanh và giới hạn âm lượng trên thiết bị.', url:'huong-dan.html'},
+    {title:'Bảo hành và đổi mới tai nghe', desc:'Thời hạn và điều kiện bảo hành', words:['bao hanh','doi moi','1 doi 1','loi san xuat','hoan tien'], advice:'Xem điều kiện bảo hành theo sản phẩm và thông tin đơn hàng. Có thể liên hệ cửa hàng để kiểm tra trường hợp cụ thể.', url:'bao-hanh.html'}
+  ];
   function close() { results.hidden = true; input.setAttribute('aria-expanded','false'); }
+  function addLink(e) {
+    const a=document.createElement('a'); a.className='hta-result'; a.href=e.url;
+    if (e.url.startsWith('https://')) { a.target='_blank'; a.rel='noopener noreferrer'; }
+    const icon=document.createElement('i'); icon.className='fa-solid '+(e.icon||'fa-circle-question'); icon.setAttribute('aria-hidden','true');
+    const content=document.createElement('span'); content.className='hta-result-text';
+    const title=document.createElement('strong'); title.textContent=e.title;
+    const desc=document.createElement('small'); desc.textContent=e.desc;
+    content.append(title,desc); a.append(icon,content); results.appendChild(a);
+  }
   function render() {
-    const query = normalize(input.value);
+    const query=normalize(input.value).replace(/\s+/g,' ');
     results.replaceChildren();
-    if (!query) { close(); return; }
-    const matches = entries.filter(e => normalize(e.title+' '+e.desc+' '+e.keywords).includes(query)).slice(0,7);
-    if (!matches.length) {
-      const empty = document.createElement('div');
-      empty.className = 'hta-empty';
-      empty.textContent = 'Không tìm thấy nội dung phù hợp. Thử từ khóa khác hoặc liên hệ kỹ thuật.';
-      results.appendChild(empty);
+    if(!query){close();return;}
+    const tokens=query.split(' ').filter(x=>x.length>1);
+    const scored=issues.map(issue=>{
+      const title=normalize(issue.title+' '+issue.desc);
+      const words=issue.words.map(normalize);
+      let score=words.some(w=>query.includes(w)||w.includes(query))?12:0;
+      if(title.includes(query))score+=8;
+      score+=tokens.filter(t=>title.includes(t)||words.some(w=>w.includes(t))).length*2;
+      return {issue,score};
+    }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+    const matches=entries.map(e=>{
+      const haystack=normalize(e.title+' '+e.desc+' '+e.keywords);
+      return {entry:e,score:haystack.includes(query)?10:tokens.filter(t=>haystack.includes(t)).length};
+    }).filter(x=>x.score>0).sort((a,b)=>b.score-a.score);
+    if(scored.length){
+      const best=scored[0].issue;
+      const advice=document.createElement('div'); advice.className='hta-advice';
+      const heading=document.createElement('strong'); heading.textContent='Gợi ý xử lý nhanh: '+best.title;
+      const detail=document.createElement('p'); detail.textContent=best.advice;
+      advice.append(heading,detail); results.appendChild(advice);
     }
-    matches.forEach(e => {
-      const a = document.createElement('a'); a.className='hta-result'; a.href=e.url;
-      if (e.url.startsWith('https://')) { a.target='_blank'; a.rel='noopener noreferrer'; }
-      const icon=document.createElement('i'); icon.className='fa-solid '+e.icon; icon.setAttribute('aria-hidden','true');
-      const content=document.createElement('span'); content.className='hta-result-text';
-      const title=document.createElement('strong'); title.textContent=e.title;
-      const desc=document.createElement('small'); desc.textContent=e.desc;
-      content.append(title,desc); a.append(icon,content); results.appendChild(a);
-    });
-    results.hidden=false; input.setAttribute('aria-expanded','true');
+    const used=new Set();
+    for(const {issue} of scored.slice(0,3)){
+      if(used.has(issue.title))continue;
+      addLink({title:issue.title,desc:issue.desc,url:issue.url,icon:'fa-screwdriver-wrench'});
+      used.add(issue.title);
+    }
+    for(const {entry} of matches){
+      if(used.size>=6)break;
+      if(used.has(entry.title))continue;
+      addLink(entry);used.add(entry.title);
+    }
+    if(!scored.length&&!matches.length){
+      const hint=document.createElement('div');hint.className='hta-hint';
+      hint.textContent='Chưa có hướng dẫn riêng cho vấn đề này. Bạn có thể xem các mục hỗ trợ hoặc nhắn kỹ thuật:';
+      results.appendChild(hint);
+      addLink({title:'Vấn đề thường gặp',desc:'Kiểm tra các lỗi phổ biến',url:'van-de.html',icon:'fa-screwdriver-wrench'});
+      addLink({title:'Hướng dẫn sử dụng',desc:'Kết nối, reset và sạc tai nghe',url:'huong-dan.html',icon:'fa-headphones'});
+    }
+    if(!used.has('Chat Zalo')) addLink({title:'Chat Zalo để được hỗ trợ',desc:'Trao đổi trực tiếp với kỹ thuật',url:'https://zalo.me/0985500095',icon:'fa-comments'});
+    results.hidden=false;input.setAttribute('aria-expanded','true');
   }
   input.addEventListener('input',render);
   input.addEventListener('keydown',event => {
