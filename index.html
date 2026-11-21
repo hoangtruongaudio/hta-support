@@ -485,7 +485,7 @@ CAM KẾT DỊCH VỤ
 
 <section class="contact-bar">
 
-    <a href="tel:0123456789">
+    <a href="tel:0985500095">
 
         📞
 
@@ -497,7 +497,7 @@ CAM KẾT DỊCH VỤ
 
     </a>
 
-    <a href="#">
+    <a href="https://zalo.me/0985500095">
 
         💬
 
@@ -509,7 +509,7 @@ CAM KẾT DỊCH VỤ
 
     </a>
 
-    <a href="#">
+    <a href="https://shopee.vn/shop/1524073190">
 
         🛒
 
@@ -630,12 +630,12 @@ CAM KẾT DỊCH VỤ
 
   // Các đường dẫn trang con giữ đúng theo menu của website hiện tại.
   const entries = [
-    {title:'Hướng dẫn kết nối tai nghe',desc:'Kết nối iPhone, Android, Bluetooth',keywords:'ket noi bluetooth ghep doi iphone ios android tai nghe',url:'huong-dan.html',icon:'fa-headphones'},
-    {title:'Cách reset tai nghe',desc:'Khôi phục và ghép nối lại',keywords:'reset khoi phuc cai dat lai tai nghe',url:'huong-dan.html',icon:'fa-rotate'},
+    {title:'Hướng dẫn kết nối tai nghe',desc:'Kết nối iPhone, Android, Bluetooth',keywords:'ket noi bluetooth ghep doi iphone ios android tai nghe',url:'huong-dan.html#bluetooth',icon:'fa-headphones'},
+    {title:'Cách reset tai nghe',desc:'Khôi phục và ghép nối lại',keywords:'reset khoi phuc cai dat lai tai nghe',url:'huong-dan.html#reset',icon:'fa-rotate'},
     {title:'Hướng dẫn sạc tai nghe',desc:'Sạc pin và hộp sạc',keywords:'sac pin hop sac sac khong vao',url:'huong-dan.html',icon:'fa-battery-half'},
     {title:'Hướng dẫn cảm ứng',desc:'Điều khiển và sử dụng tai nghe',keywords:'cam ung cham dieu khien nhac am luong',url:'huong-dan.html',icon:'fa-hand-pointer'},
     {title:'Tính năng & Thông số',desc:'ANC, Bluetooth, pin, mic',keywords:'tinh nang thong so san pham anc bluetooth pin mic',url:'thong-so.html',icon:'fa-headphones'},
-    {title:'Vấn đề thường gặp',desc:'Không kết nối, không sạc, mất tiếng',keywords:'van de loi khong ket noi khong sac mat tieng',url:'van-de.html',icon:'fa-screwdriver-wrench'},
+    {title:'Vấn đề thường gặp',desc:'Không kết nối, không sạc, mất tiếng',keywords:'van de loi khong ket noi khong sac mat tieng',url:'van-de.html#bluetooth',icon:'fa-screwdriver-wrench'},
     {title:'Chính sách bảo hành',desc:'Điều kiện, thời gian, đổi mới',keywords:'bao hanh doi tra doi moi loi san xuat',url:'bao-hanh.html',icon:'fa-shield-halved'},
     {title:'Liên hệ kỹ thuật',desc:'Hotline, Zalo, hỗ trợ trực tiếp',keywords:'lien he ky thuat ho tro hotline zalo',url:'lien-he.html',icon:'fa-headset'},
     {title:'Mẹo sử dụng tai nghe',desc:'Giữ pin bền và sử dụng ổn định',keywords:'meo su dung pin ben bao quan',url:'meo-su-dung.html',icon:'fa-lightbulb'},
@@ -649,13 +649,13 @@ CAM KẾT DỊCH VỤ
   }
   // Nhóm vấn đề được biên soạn sẵn, hoạt động offline, không gọi AI.
   const issues = [
-    {title:'Tai nghe bị ngắt kết nối liên tục', desc:'Bluetooth chập chờn, âm thanh ngắt quãng', words:['ngat','dut quang','chap chon','mat ket noi','roi ket noi','tu ngat','ngat quang'], advice:'Thử sạc đầy tai nghe, giữ điện thoại ở gần, tắt rồi bật Bluetooth và ghép nối lại. Nếu vẫn bị ngắt, thử kết nối với điện thoại khác.', url:'van-de.html'},
-    {title:'Tai nghe chỉ nghe được một bên', desc:'Một bên không phát tiếng hoặc mất âm thanh', words:['mot ben','1 ben','ben trai','ben phai','mat tieng','khong nghe'], advice:'Kiểm tra pin hai tai, vệ sinh nhẹ điểm tiếp xúc sạc, sau đó quên thiết bị Bluetooth và ghép nối lại.', url:'van-de.html'},
-    {title:'Tai nghe không sạc hoặc nhanh hết pin', desc:'Hộp sạc, pin yếu, không nhận sạc', words:['khong sac','sac khong vao','het pin','hao pin','pin yeu','nhanh het pin','hop sac'], advice:'Kiểm tra dây và củ sạc, làm sạch nhẹ chân tiếp xúc khô, thử nguồn sạc khác. Ngừng sử dụng nếu thiết bị nóng bất thường hoặc phồng pin.', url:'van-de.html'},
-    {title:'Tai nghe không kết nối Bluetooth', desc:'Không tìm thấy tai nghe, ghép đôi thất bại', words:['khong ket noi','khong tim thay','khong ghep','bluetooth','ghep doi','ket noi'], advice:'Bật Bluetooth, mở hộp tai nghe, đưa tai nghe vào chế độ ghép nối theo hướng dẫn từng mẫu. Nếu đã kết nối máy cũ, hãy ngắt kết nối ở máy đó.', url:'huong-dan.html'},
-    {title:'Reset tai nghe và kết nối lại', desc:'Khôi phục ghép nối khi tai nghe gặp lỗi', words:['reset','khoi phuc','cai dat lai','dat lai'], advice:'Cách reset có thể khác nhau giữa AP2, AP3, Pro Gen 2 và AP4. Chọn đúng mẫu tai nghe trong hướng dẫn trước khi thao tác.', url:'huong-dan.html'},
-    {title:'Mic tai nghe nhỏ hoặc không hoạt động', desc:'Không nghe tiếng khi gọi điện', words:['mic','micro','khong noi','khong thu am','noi nho','goi dien'], advice:'Kiểm tra quyền dùng micro của ứng dụng, chọn đúng đầu vào âm thanh và thử ghi âm bằng ứng dụng khác.', url:'van-de.html'},
-    {title:'Âm lượng tai nghe quá nhỏ hoặc quá to', desc:'Điều chỉnh âm thanh, kiểm tra thiết bị', words:['am luong','qua to','qua nho','nho tieng','to tieng'], advice:'Kiểm tra âm lượng trên cả điện thoại và tai nghe, cài đặt cân bằng âm thanh và giới hạn âm lượng trên thiết bị.', url:'huong-dan.html'},
+    {title:'Tai nghe bị ngắt kết nối liên tục', desc:'Bluetooth chập chờn, âm thanh ngắt quãng', words:['ngat','dut quang','chap chon','mat ket noi','roi ket noi','tu ngat','ngat quang'], advice:'Thử sạc đầy tai nghe, giữ điện thoại ở gần, tắt rồi bật Bluetooth và ghép nối lại. Nếu vẫn bị ngắt, thử kết nối với điện thoại khác.', url:'van-de.html#disconnect'},
+    {title:'Tai nghe chỉ nghe được một bên', desc:'Một bên không phát tiếng hoặc mất âm thanh', words:['mot ben','1 ben','ben trai','ben phai','mat tieng','khong nghe'], advice:'Kiểm tra pin hai tai, vệ sinh nhẹ điểm tiếp xúc sạc, sau đó quên thiết bị Bluetooth và ghép nối lại.', url:'van-de.html#one'},
+    {title:'Tai nghe không sạc hoặc nhanh hết pin', desc:'Hộp sạc, pin yếu, không nhận sạc', words:['khong sac','sac khong vao','het pin','hao pin','pin yeu','nhanh het pin','hop sac'], advice:'Kiểm tra dây và củ sạc, làm sạch nhẹ chân tiếp xúc khô, thử nguồn sạc khác. Ngừng sử dụng nếu thiết bị nóng bất thường hoặc phồng pin.', url:'van-de.html#charge'},
+    {title:'Tai nghe không kết nối Bluetooth', desc:'Không tìm thấy tai nghe, ghép đôi thất bại', words:['khong ket noi','khong tim thay','khong ghep','bluetooth','ghep doi','ket noi'], advice:'Bật Bluetooth, mở hộp tai nghe, đưa tai nghe vào chế độ ghép nối theo hướng dẫn từng mẫu. Nếu đã kết nối máy cũ, hãy ngắt kết nối ở máy đó.', url:'van-de.html#bluetooth'},
+    {title:'Reset tai nghe và kết nối lại', desc:'Khôi phục ghép nối khi tai nghe gặp lỗi', words:['reset','khoi phuc','cai dat lai','dat lai'], advice:'Cách reset có thể khác nhau giữa AP2, AP3, Pro Gen 2 và AP4. Chọn đúng mẫu tai nghe trong hướng dẫn trước khi thao tác.', url:'huong-dan.html#reset'},
+    {title:'Mic tai nghe nhỏ hoặc không hoạt động', desc:'Không nghe tiếng khi gọi điện', words:['mic','micro','khong noi','khong thu am','noi nho','goi dien'], advice:'Kiểm tra quyền dùng micro của ứng dụng, chọn đúng đầu vào âm thanh và thử ghi âm bằng ứng dụng khác.', url:'lien-he.html'},
+    {title:'Âm lượng tai nghe quá nhỏ hoặc quá to', desc:'Điều chỉnh âm thanh, kiểm tra thiết bị', words:['am luong','qua to','qua nho','nho tieng','to tieng'], advice:'Kiểm tra âm lượng trên cả điện thoại và tai nghe, cài đặt cân bằng âm thanh và giới hạn âm lượng trên thiết bị.', url:'van-de.html#volume'},
     {title:'Bảo hành và đổi mới tai nghe', desc:'Thời hạn và điều kiện bảo hành', words:['bao hanh','doi moi','1 doi 1','loi san xuat','hoan tien'], advice:'Xem điều kiện bảo hành theo sản phẩm và thông tin đơn hàng. Có thể liên hệ cửa hàng để kiểm tra trường hợp cụ thể.', url:'bao-hanh.html'}
   ];
   function close() { results.hidden = true; input.setAttribute('aria-expanded','false'); }

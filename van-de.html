@@ -358,6 +358,20 @@ JAVASCRIPT
 
 <script src="assets/js/problem.js"></script>
 
+
+<!-- Tự mở đúng hướng dẫn khi khách đến từ ô tìm kiếm -->
+<script>
+window.addEventListener('load', function () {
+  const key = decodeURIComponent(location.hash.slice(1));
+  if (!key) return;
+  const card = Array.from(document.querySelectorAll('[data-problem]'))
+    .find(el => el.getAttribute('data-problem') === key);
+  if (!card) return;
+  card.scrollIntoView({behavior:'smooth',block:'center'});
+  // Kích hoạt chính trình xử lý popup đang có trong trang.
+  setTimeout(() => card.click(), 250);
+});
+</script>
 </body>
 
 </html>
