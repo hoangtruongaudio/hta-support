@@ -32,6 +32,29 @@
 
     <link rel="stylesheet" href="assets/css/style.css">
 
+
+    <!-- HTA SMART SEARCH: styles -->
+    <style>
+      .hta-search{position:relative;margin:20px 0 24px;z-index:30;text-align:left}
+      .hta-search label{display:block;font-size:16px;font-weight:700;color:#111827;margin:0 0 10px}
+      .hta-search-field{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:0 16px;box-shadow:0 8px 25px rgba(15,23,42,.07)}
+      .hta-search-field:focus-within{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+      .hta-search-field>i{color:#2563eb;font-size:18px}
+      #htaSearch{width:100%;min-width:0;height:56px;border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:#111827}
+      #htaSearch::placeholder{color:#8992a3}
+      .hta-results{position:absolute;left:0;right:0;top:100%;margin-top:8px;max-height:340px;overflow:auto;background:#fff;border:1px solid #e5e7eb;border-radius:18px;box-shadow:0 18px 42px rgba(15,23,42,.16);padding:6px}
+      .hta-results[hidden]{display:none}
+      .hta-result{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;text-decoration:none;color:#111827}
+      .hta-result:hover,.hta-result:focus-visible{background:#eff6ff;outline:none}
+      .hta-result>i{width:24px;text-align:center;color:#2563eb;font-size:18px;flex-shrink:0}
+      .hta-result-text{display:block;min-width:0;flex:1}
+      .hta-result-text strong{display:block;font-size:14px;font-weight:700;line-height:1.4}
+      .hta-result-text small{display:block;color:#64748b;font-size:12px;margin-top:3px;line-height:1.4}
+      .hta-empty{padding:15px;font-size:13px;color:#64748b;line-height:1.6}
+      @media(max-width:400px){.hta-search label{font-size:15px}#htaSearch{font-size:14px}}
+    </style>
+
+    <link rel="icon" href="assets/images/favicon.png">
 </head>
 
 <body>
@@ -68,6 +91,18 @@
 <!-- ===========================
         WELCOME
 =========================== -->
+
+
+<!-- HTA SMART SEARCH: start -->
+<section class="hta-search" role="search" aria-label="Tìm kiếm hỗ trợ">
+  <label for="htaSearch"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Bạn cần hỗ trợ vấn đề gì?</label>
+  <div class="hta-search-field">
+    <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+    <input id="htaSearch" type="search" placeholder="Tìm kết nối, bảo hành, reset..." autocomplete="off" aria-controls="htaResults" aria-expanded="false" />
+  </div>
+  <div id="htaResults" class="hta-results" hidden aria-label="Gợi ý tìm kiếm"></div>
+</section>
+<!-- HTA SMART SEARCH: end -->
 
 <section class="welcome">
 
@@ -580,8 +615,70 @@ CAM KẾT DỊCH VỤ
 
 <script src="assets/js/app.js"></script>
 
+
+<!-- HTA SMART SEARCH: script -->
+<script>
+(function () {
+  'use strict';
+  const input = document.getElementById('htaSearch');
+  const results = document.getElementById('htaResults');
+  if (!input || !results) return;
+
+  // Các đường dẫn trang con giữ đúng theo menu của website hiện tại.
+  const entries = [
+    {title:'Hướng dẫn kết nối tai nghe',desc:'Kết nối iPhone, Android, Bluetooth',keywords:'ket noi bluetooth ghep doi iphone ios android tai nghe',url:'huong-dan.html',icon:'fa-headphones'},
+    {title:'Cách reset tai nghe',desc:'Khôi phục và ghép nối lại',keywords:'reset khoi phuc cai dat lai tai nghe',url:'huong-dan.html',icon:'fa-rotate'},
+    {title:'Hướng dẫn sạc tai nghe',desc:'Sạc pin và hộp sạc',keywords:'sac pin hop sac sac khong vao',url:'huong-dan.html',icon:'fa-battery-half'},
+    {title:'Hướng dẫn cảm ứng',desc:'Điều khiển và sử dụng tai nghe',keywords:'cam ung cham dieu khien nhac am luong',url:'huong-dan.html',icon:'fa-hand-pointer'},
+    {title:'Tính năng & Thông số',desc:'ANC, Bluetooth, pin, mic',keywords:'tinh nang thong so san pham anc bluetooth pin mic',url:'thong-so.html',icon:'fa-headphones'},
+    {title:'Vấn đề thường gặp',desc:'Không kết nối, không sạc, mất tiếng',keywords:'van de loi khong ket noi khong sac mat tieng',url:'van-de.html',icon:'fa-screwdriver-wrench'},
+    {title:'Chính sách bảo hành',desc:'Điều kiện, thời gian, đổi mới',keywords:'bao hanh doi tra doi moi loi san xuat',url:'bao-hanh.html',icon:'fa-shield-halved'},
+    {title:'Liên hệ kỹ thuật',desc:'Hotline, Zalo, hỗ trợ trực tiếp',keywords:'lien he ky thuat ho tro hotline zalo',url:'lien-he.html',icon:'fa-headset'},
+    {title:'Mẹo sử dụng tai nghe',desc:'Giữ pin bền và sử dụng ổn định',keywords:'meo su dung pin ben bao quan',url:'meo-su-dung.html',icon:'fa-lightbulb'},
+    {title:'Chat Zalo',desc:'Nhắn tin hỗ trợ khách hàng',keywords:'zalo chat nhan tin',url:'https://zalo.me/0985500095',icon:'fa-comments'},
+    {title:'Facebook Messenger',desc:'Nhắn tin với cửa hàng',keywords:'facebook messenger fanpage',url:'https://m.me/103209069168975',icon:'fa-comment-dots'},
+    {title:'Shopee',desc:'Ghé thăm cửa hàng',keywords:'shopee mua hang',url:'https://shopee.vn/shop/1524073190',icon:'fa-bag-shopping'},
+    {title:'TikTok',desc:'Xem video và cửa hàng',keywords:'tiktok shop video',url:'https://www.tiktok.com/@hoangtruongstore',icon:'fa-play'}
+  ];
+  function normalize(value) {
+    return value.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').trim();
+  }
+  function close() { results.hidden = true; input.setAttribute('aria-expanded','false'); }
+  function render() {
+    const query = normalize(input.value);
+    results.replaceChildren();
+    if (!query) { close(); return; }
+    const matches = entries.filter(e => normalize(e.title+' '+e.desc+' '+e.keywords).includes(query)).slice(0,7);
+    if (!matches.length) {
+      const empty = document.createElement('div');
+      empty.className = 'hta-empty';
+      empty.textContent = 'Không tìm thấy nội dung phù hợp. Thử từ khóa khác hoặc liên hệ kỹ thuật.';
+      results.appendChild(empty);
+    }
+    matches.forEach(e => {
+      const a = document.createElement('a'); a.className='hta-result'; a.href=e.url;
+      if (e.url.startsWith('https://')) { a.target='_blank'; a.rel='noopener noreferrer'; }
+      const icon=document.createElement('i'); icon.className='fa-solid '+e.icon; icon.setAttribute('aria-hidden','true');
+      const content=document.createElement('span'); content.className='hta-result-text';
+      const title=document.createElement('strong'); title.textContent=e.title;
+      const desc=document.createElement('small'); desc.textContent=e.desc;
+      content.append(title,desc); a.append(icon,content); results.appendChild(a);
+    });
+    results.hidden=false; input.setAttribute('aria-expanded','true');
+  }
+  input.addEventListener('input',render);
+  input.addEventListener('keydown',event => {
+    if(event.key==='Escape') close();
+    if(event.key==='Enter' && !results.hidden) {
+      const first=results.querySelector('a');
+      if(first) { event.preventDefault(); first.click(); }
+    }
+  });
+  document.addEventListener('click',event => { if(!event.target.closest('.hta-search')) close(); });
+})();
+</script>
+
 </body>
 
 </html>
 
-<link rel="icon" href="assets/images/favicon.png">
